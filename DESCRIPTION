@@ -1,0 +1,21 @@
+Package: voipexa
+Title: Value of Information (voi) as a ModelsCloud Service
+Version: 0.1.0
+Authors@R: person("Ramin", "Rezaeianzadeh", email = "raminrzn@student.ubc.ca",
+                  role = c("aut", "cre"))
+Description: Runs the functions of the voi package (Jackson et al.,
+    <https://chjackson.github.io/voi/>) on UBC ModelsCloud, so that methods
+    needing INLA or JAGS can be used without installing them locally. It is
+    called by the voiremote client, which sends the arguments as exactly
+    encoded data and receives voi's result as the complete R object. Only
+    data is accepted; functions of voi that take R functions are not
+    offered.
+License: GPL-3
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
+Depends: R (>= 4.0.0)
+Imports: jsonlite, utils, voi
+Suggests: testthat (>= 3.0.0), INLA, splancs, rjags
+Config/testthat/edition: 3
+URL: https://github.com/raminrzn/voipexa
