@@ -75,7 +75,7 @@ voi_service_info <- function(...) {
 #' @param ... Ignored.
 #' @export
 get_sample_input <- function(...) {
-  args <- list(outputs = voi::chemo_nb, inputs = voi::chemo_pars,
+  args <- list(outputs = voi_data("chemo_nb"), inputs = voi_data("chemo_pars"),
                pars = list("p_side_effects_t1", c("p_side_effects_t1", "p_side_effects_t2")))
   list(fn = "evppi", args_json = as.character(.vr_to_json(.vr_encode(args))))
 }

@@ -41,3 +41,20 @@ test_that("info reports versions and optional components", {
   expect_equal(i$versions$voi, as.character(utils::packageVersion("voi")))
   expect_true(all(c("INLA", "rjags") %in% names(i$optional)))
 })
+
+test_that("voi's example datasets can be referenced by name", {
+  args <- list(outputs = voi_data("chemo_nb"), inputs = voi_data("chemo_pars"),
+               pars = "p_side_effects_t1")
+  o <- call_service("evppi", args)
+  expect_true(o$ok)
+  expect_identical(result_of(o), voi::evppi(voi::chemo_nb, voi::chemo_pars,
+                                            pars = "p_side_effects_t1"))
+  o <- call_service("evppivar", list(outputs = voi_data("chemo_nb", 1),
+                                     inputs = voi_data("chemo_pars"),
+                                     pars = "p_side_effects_t1", verbose = FALSE))
+  expect_identical(result_of(o), voi::evppivar(voi::chemo_nb[, 1], voi::chemo_pars,
+                                               pars = "p_side_effects_t1", verbose = FALSE))
+  o <- call_service("evpi", list(outputs = voi_data("mtcars")))
+  expect_false(o$ok)
+  expect_match(o$error, "Unknown voi dataset")
+})
