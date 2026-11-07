@@ -35,10 +35,18 @@ installed.
 
 ## Status
 
-- `method = "inla"` needs INLA and splancs on the server.
-- `evsi(method = "mm")` needs JAGS and rjags on the server.
+Published on ModelsCloud as `/resplab/voipexa` (2026-11-07). Every function
+and method that needs neither INLA nor JAGS was checked live against voi run
+locally (see the voiremote README).
 
-Neither is installed yet.
+Not yet available, pending installation on the server:
+
+- `method = "inla"`, which needs INLA, fmesher and splancs. fmesher needs sf,
+  and sf needs the GDAL, GEOS, PROJ and udunits system libraries.
+- `evsi(method = "mm")`, which needs JAGS and rjags.
+
+Requests are limited to about 1 MB. Synchronous calls stop at 60 seconds;
+asynchronous calls return their result through the callback URL.
 
 ## Licence
 
